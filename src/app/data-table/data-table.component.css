@@ -1,0 +1,26 @@
+.full-width-table {
+  width: 100%;
+}
+
+.mat-elevation-z8 {
+  width: 80%;
+  margin: 30px auto;
+  overflow: auto;
+}
+
+.table-btn {
+  cursor: pointer;
+}
+
+.table-btn-edit:hover {
+  color: darkcyan;
+}
+
+.table-btn-delete:hover {
+  color: darkred;
+}
+
+.search-div {
+  padding-left: 20px;
+  padding-top: 10px;
+}
