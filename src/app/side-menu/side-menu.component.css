@@ -52,10 +52,10 @@
   color: #fff;
 }
 
-.mat-list-item:focus {
-  padding-left: 5px;
-}
-
 .sidenav {
   background-color: #a59d9a87;
+}
+
+.menuBtn:focus {
+  outline: none;
 }

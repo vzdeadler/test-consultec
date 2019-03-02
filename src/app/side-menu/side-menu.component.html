@@ -16,6 +16,7 @@
   <mat-sidenav-content>
     <mat-toolbar color="primary">
       <button
+        class="menuBtn"
         type="button"
         aria-label="Toggle sidenav"
         mat-icon-button
@@ -25,7 +26,7 @@
       <img class="navbar-logo" src="../../assets/images/Logo_Consultec_h.png">
       <!-- <span>Consultec - Test</span> -->
       <span class="navbar-spacer"></span>
-      <a class="navbar-contact" href="#">Contacto</a>
+      <a class="navbar-contact" routerLink="/contact">Contacto</a>
     </mat-toolbar>
     <ng-content></ng-content>
     <!-- Add Content Here -->

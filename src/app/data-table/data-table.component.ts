@@ -1,11 +1,14 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { DataTableDataSource } from './data-table-datasource';
+import { MatDialog } from '@angular/material';
 import { Router } from '@angular/router';
 import { MatTable } from '@angular/material';
+import { DialogComponent } from '../dialog/dialog.component';
 
 import { ClientDataService } from '../services/client-data.service';
 import { LoadClientsService } from '../services/load-clients.service';
+import { EditClientService } from '../services/edit-client.service';
 
 @Component({
   selector: 'app-data-table',
@@ -23,12 +26,15 @@ export class DataTableComponent implements OnInit {
 
   constructor(
     private clientDataService: ClientDataService,
+    private editClientService: EditClientService,
     private loadClientsService: LoadClientsService,
-    private router: Router
+    private router: Router,
+    private dialog: MatDialog,
+
   ){ }
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['first_name', 'last_name', 'id', 'sex', 'email', 'locality', 'actions'];
+  displayedColumns = ['active', 'first_name', 'last_name', 'id', 'sex', 'email', 'locality', 'actions'];
 
   ngOnInit() {
     // this.dataSource = new DataTableDataSource(this.paginator, this.sort);
@@ -38,8 +44,26 @@ export class DataTableComponent implements OnInit {
         this.dataSource = new MatTableDataSource(data.clients);
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
+        console.log(data);
       });
+
+  
     
+  }
+
+  openDialog(_msg, _title) {
+    const dialogRef = this.dialog.open(DialogComponent, {
+      width: '50%',
+      data: {
+        title: _title,
+        msg: _msg
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.router.navigate(['/list_clients/']);
+    });
   }
 
   deleteSearch(){
@@ -49,6 +73,16 @@ export class DataTableComponent implements OnInit {
 
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  delete(row){
+    row.active = false;
+    this.editClientService.editClient(row)
+      .subscribe( (data) => {
+        console.log('Success on PATCH ', data);
+        let dialogMsg: string = 'El cliente ha sido inactivado con éxito.';
+        this.openDialog(dialogMsg, 'Listo');
+    });
   }
 
   edit(row){

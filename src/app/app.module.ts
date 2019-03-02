@@ -14,6 +14,7 @@ import { MatToolbarModule, MatInputModule, MatButtonModule, MatSidenavModule, Ma
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DataTableComponent } from './data-table/data-table.component';
 import { DialogComponent } from './dialog/dialog.component';
+import { ContactComponent } from './contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { DialogComponent } from './dialog/dialog.component';
     ListClientsComponent,
     SideMenuComponent,
     DataTableComponent,
-    DialogComponent
+    DialogComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,

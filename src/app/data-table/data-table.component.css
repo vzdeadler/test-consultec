@@ -24,3 +24,7 @@
   padding-left: 20px;
   padding-top: 10px;
 }
+
+mat-footer-row mat-footer-cell {
+  justify-content: center;
+}

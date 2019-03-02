@@ -24,11 +24,11 @@
         <div class="input-group-prepend">
           <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{client.id_type}}</button>
           <div class="dropdown-menu">
-            <a class="dropdown-item" (click)="client.id_type = 'V'">Venezolano</a>
+            <a class="dropdown-item id_type_drop" (click)="client.id_type = 'V'">Venezolano</a>
             <div role="separator" class="dropdown-divider"></div>
-            <a class="dropdown-item" (click)="client.id_type = 'E'">Extranjero</a>
+            <a class="dropdown-item id_type_drop" (click)="client.id_type = 'E'">Extranjero</a>
             <div role="separator" class="dropdown-divider"></div>
-            <a class="dropdown-item" (click)="client.id_type = 'J'">Jurídico</a>
+            <a class="dropdown-item id_type_drop" (click)="client.id_type = 'J'">Jurídico</a>
           </div>
         </div>
         <input type="number" class="form-control" id="inputID" [(ngModel)]="client.id" [ngModelOptions]="{standalone: true}" placeholder="Ingrese la cédula" aria-label="Text input with dropdown button">

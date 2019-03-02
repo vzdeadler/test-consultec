@@ -18,6 +18,7 @@ export class CreateClientsComponent implements OnInit {
   txtMode: string;
   client: any;
   exitOnClose: boolean = false;
+  emailPattern: string = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
 
   constructor(
     private route: ActivatedRoute,
@@ -89,6 +90,7 @@ export class CreateClientsComponent implements OnInit {
   checkInputs() {
     let dialogMsg: string;
     let enable: boolean = false;
+    console.log('value: ', /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/.test(this.client.email) );
     if(!this.client.first_name){
       dialogMsg = 'Debe ingresar el nombre del cliente.';
     }else if(!this.client.last_name){
@@ -103,6 +105,8 @@ export class CreateClientsComponent implements OnInit {
       dialogMsg = 'Debe ingresar la localidad del cliente.';
     }else if(!this.client.email){
       dialogMsg = 'Debe ingresar el correo del cliente.';
+    }else if(!(/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/.test(this.client.email))){
+      dialogMsg = 'El correo electrónico tiene un formato erróneo.'
     }else{
       enable = true;
     }

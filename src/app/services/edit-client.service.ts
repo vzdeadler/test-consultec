@@ -14,6 +14,7 @@ export class EditClientService {
   ) { }
 
   editClient(data) {
+    console.log(data);
     return this.http.patch(
       this.config.api_url + '/client/' + data._id,
       {
